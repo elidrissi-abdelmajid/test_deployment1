@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = 'fastapi-hello-world'
+        DOCKER_IMAGE = 'test_deployment'
         DOCKER_TAG = "latest"
         DOCKER_USER = "mjid6"
         DOCKER_PASS ="dckr_pat_knjjAjvRy6Qsy1arF36wVnB2Wug"
@@ -29,7 +29,7 @@ pipeline {
                 script {
                     // Build the Docker image
                     bat 'docker login -u ${USER_NAME} -p ${DOCKER_PASS}'
-                    bat 'echo "Successfully connected"'
+            
                 }
             }
         }
