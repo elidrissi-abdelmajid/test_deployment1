@@ -28,11 +28,28 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    bat "docker login -u ${USER_NAME} -p ${DOCKER_PASS}"
+                    bat "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
             
                 }
             }
         }
+        stage("test the docker image"){
+            steps{
+                script{
+                    bat "docker images"
+                }
+            }
+        }
+        stage('Push the image into docker hub') {
+            steps {
+                script {
+                    // Build the Docker image
+                    bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
+            
+                }
+            }
+        }
+        
     }
 
 }
