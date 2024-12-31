@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                    // bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
         }
@@ -36,7 +36,7 @@ pipeline {
         stage("test the docker image"){
             steps{
                 script{
-                    bat "docker images"
+                    // bat "docker images"
                 }
             }
         }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
+                    // bat "docker push ${DOCKER_IMAGE}:${DOCKER_TAG}"
             
                 }
             }
