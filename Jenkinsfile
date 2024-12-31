@@ -49,6 +49,16 @@ pipeline {
                 }
             }
         }
+        stage('deploy the image in k8s') {
+            steps {
+                script {
+                    // Build the Docker image
+                    bat "kubectl apply -f deployment.yaml --validate=false --kubeconfig=C:\\Users\\USER\\.kube\\config"
+                    bat "kubectl get services  --kubeconfig=C:\\Users\\USER\\.kube\\config"
+                    bat "kubectl  get deployment --kubeconfig=C:\\Users\\USER\\.kube\\config"
+                }
+            }
+        }
         
     }
 
