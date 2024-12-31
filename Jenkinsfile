@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    bat 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
+                    bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    bat 'docker login -u ${USER_NAME} -p ${DOCKER_PASS}'
+                    bat "docker login -u ${USER_NAME} -p ${DOCKER_PASS}"
             
                 }
             }
