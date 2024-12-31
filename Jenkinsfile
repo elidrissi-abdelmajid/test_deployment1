@@ -3,13 +3,16 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'fastapi-hello-world'
+        DOCKER_TAG = "latest"
+        DOCKER_USER = "mjid6"
+        DOCKER_PASS ="dckr_pat_knjjAjvRy6Qsy1arF36wVnB2Wug"
     }
 
     stages {
-        stage('Checkout') {
+        stage('clone the repository') {
             steps {
                 // Pull the code from your Git repository
-                git 'https://github.com/your-repo/fastapi-hello-world.git'
+                git branch: 'master', url: 'https://github.com/elidrissi-abdelmajid/test_deployment1.git'
             }
         }
 
@@ -17,35 +20,19 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    sh 'docker build -t $DOCKER_IMAGE .'
+                    bat 'docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .'
                 }
             }
         }
-
-        stage('Run Docker Container') {
+        stage('login to Docker') {
             steps {
                 script {
-                    // Run the Docker container
-                    sh 'docker run -d -p 8000:8000 $DOCKER_IMAGE'
-                }
-            }
-        }
-
-        stage('Clean up') {
-            steps {
-                script {
-                    // Stop the container after the build
-                    sh 'docker ps -q | xargs docker stop'
-                    sh 'docker system prune -f'
+                    // Build the Docker image
+                    bat 'docker login -u ${USER_NAME} -p ${DOCKER_PASS}'
+                    bat 'echo "Successfully connected"'
                 }
             }
         }
     }
 
-    post {
-        always {
-            // Cleanup or notify actions
-            echo 'Pipeline finished!'
-        }
-    }
 }
