@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    // bat "docker build -t mjid6/${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                    bat "docker build -t mjid6/${DOCKER_IMAGE}:${DOCKER_TAG} ."
                 }
             }
         }
