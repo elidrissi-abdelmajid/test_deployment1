@@ -18,7 +18,7 @@ spec:
       - name: test-container
         image: mjid6/test_deployment:latest  
         ports:
-        - containerPort: 80  # Port exposed inside the container
+        - containerPort: 8000  # Port exposed inside the container
 
 apiVersion: v1
 kind: Service
@@ -30,5 +30,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80      # The port on which the service will be exposed inside the cluster 
-      targetPort: 80  
-  type: LoadBalancer  
+      targetPort: 8000  
+  type: NodePort  
