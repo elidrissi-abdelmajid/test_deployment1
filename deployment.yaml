@@ -31,4 +31,4 @@ spec:
     - protocol: TCP
       port: 80      # The port on which the service will be exposed inside the cluster 
       targetPort: 80  
-  type: NodePort  
+  type: LoadBalancer  
