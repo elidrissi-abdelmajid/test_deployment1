@@ -52,12 +52,20 @@ pipeline {
         stage('deploy the image in k8s') {
             steps {
                 script {
-                    // Build the Docker image
+                    // Apply the deployment and service YAMLs
                     bat "kubectl apply -f deployment.yaml --validate=false --kubeconfig=C:\\Users\\USER\\.kube\\config"
-                    bat "kubectl  get deployment --kubeconfig=C:\\Users\\USER\\.kube\\config"
-                    bat "kubectl get services  --kubeconfig=C:\\Users\\USER\\.kube\\config"
+
+                    // Wait for deployment to become ready
+                    bat "kubectl rollout status deployment/test-deployment --kubeconfig=C:\\Users\\USER\\.kube\\config"
+
+                    // Check services
+                    bat "kubectl get services --kubeconfig=C:\\Users\\USER\\.kube\\config"
+
+                    // Print node IPs (for NodePort services)
+                    bat "kubectl get nodes -o wide --kubeconfig=C:\\Users\\USER\\.kube\\config"
                 }
             }
+
         }
         
     }
