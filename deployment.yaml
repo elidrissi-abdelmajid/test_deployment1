@@ -31,6 +31,4 @@ spec:
     - protocol: TCP
       port: 80      # The port on which the service will be exposed inside the cluster 
       targetPort: 80  
-      nodePort: 30001  # Expose this port on your local node
-  type: NodePort
-   
+  type: LoadBalancer  
