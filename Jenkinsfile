@@ -63,6 +63,7 @@ pipeline {
 
                     // Print node IPs (for NodePort services)
                     bat "kubectl get nodes -o wide --kubeconfig=C:\\Users\\USER\\.kube\\config"
+                    bat "kubectl port-forward service/test-service 8082:80 --kubeconfig=C:\\Users\\USER\\.kube\\config"
                 }
             }
 
