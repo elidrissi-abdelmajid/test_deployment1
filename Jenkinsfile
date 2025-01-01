@@ -16,14 +16,14 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         script {
-        //             // Build the Docker image
-        //             // bat "docker build -t mjid6/${DOCKER_IMAGE}:${DOCKER_TAG} ."
-        //         }
-        //     }
-        // }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Build the Docker image
+                    // bat "docker build -t mjid6/${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                }
+            }
+        }
         stage('login to Docker') {
             steps {
                 script {
@@ -33,22 +33,22 @@ pipeline {
                 }
             }
         }
-        // stage("test the docker image"){
-        //     steps{
-        //         script{
-        //             // bat "docker images"
-        //         }
-        //     }
-        // }
-        // stage('Push the image into docker hub') {
-        //     steps {
-        //         script {
-        //             // Build the Docker image
-        //             // bat "docker push mjid6/${DOCKER_IMAGE}:${DOCKER_TAG}"
+        stage("test the docker image"){
+            steps{
+                script{
+                    bat "docker images"
+                }
+            }
+        }
+        stage('Push the image into docker hub') {
+            steps {
+                script {
+                    // Build the Docker image
+                    bat "docker push mjid6/${DOCKER_IMAGE}:${DOCKER_TAG}"
             
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
         stage('deploy the image in k8s') {
             steps {
                 script {
