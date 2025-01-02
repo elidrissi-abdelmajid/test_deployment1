@@ -18,7 +18,7 @@ pipeline {
         stage('remove the old image') {
             steps {
                 // Pull the code from your Git repository
-                bat "docker build -t mjid6/${DOCKER_IMAGE}:latest"
+                bat "docker rmi mjid6/${DOCKER_IMAGE}:latest"
             }
         }
 
