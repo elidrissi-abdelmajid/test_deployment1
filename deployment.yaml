@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: test-container
-        image: mjid6/test_deployment:v1  
+        image: mjid6/test_deployment:v3  
         ports:
         - containerPort: 8000  # Port exposed inside the container
 
