@@ -5,8 +5,8 @@ app = FastAPI()
 @app.get("/")
 def func():
     return {
-        "message": "hello world",
-        "AI" : "comment tu vas mon frère ? ",
-        "message" : "je suis trés bien hmdullah et toi  comment allez vous ?",
-        "AI": "super, merci"
+        "message1": "hello world",
+        "AI1" : "comment tu vas mon frère ? ",
+        "message2" : "je suis trés bien hmdullah et toi  comment allez vous ?",
+        "AI2": "super, merci"
     }
