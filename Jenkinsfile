@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'test_deployment'
-        DOCKER_TAG = "latest"
+        DOCKER_TAG = "v1"
         DOCKER_USER = "mjid6"
         DOCKER_PASS ="dckr_pat_knjjAjvRy6Qsy1arF36wVnB2Wug"
     }
