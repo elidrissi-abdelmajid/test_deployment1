@@ -15,6 +15,12 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/elidrissi-abdelmajid/test_deployment1.git'
             }
         }
+        stage('remove the old image') {
+            steps {
+                // Pull the code from your Git repository
+                bat "docker build -t mjid6/${DOCKER_IMAGE}:latest"
+            }
+        }
 
         stage('Build Docker Image') {
             steps {
