@@ -8,11 +8,11 @@ spec:
   replicas: 3  # Number of pods
   selector:
     matchLabels:
-      app: test-app
+      app: test-app    # This ensures the deployment manages pods with this label
   template:
     metadata:
       labels:
-        app: test-app
+        app: test-app  # Pods created by this deployment will have this label  
     spec:
       containers:
       - name: test-container
@@ -24,11 +24,41 @@ apiVersion: v1
 kind: Service
 metadata:
   name: test-service
+  labels:
+    app: test-app  # Label for the service
 spec:
   selector:
-    app: test-app  # Should match the label in the Deployment
+    app: test-app  # This selects the pods with the label "app: test-app"
   ports:
-    - protocol: TCP
-      port: 80      # The port on which the service will be exposed inside the cluster 
-      targetPort: 8000  
-  type: NodePort  
+    - port: 80        # The port on which the service is exposed
+      targetPort: 8000 # The port on the pod where the application is running
+      protocol: TCP    # Protocol used for communication
+  type: NodePort        # The type of the service; exposes it on a specific port of the node
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: test-service
+# spec:
+#   selector:
+#     app: test-app  # Should match the label in the Deployment
+#   ports:
+#     - protocol: TCP
+#       port: 80      # The port on which the service will be exposed inside the cluster 
+#       targetPort: 8000  
+#   type: NodePort  

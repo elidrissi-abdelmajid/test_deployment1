@@ -1,13 +1,11 @@
 pipeline {
     agent any
-
     environment {
         DOCKER_IMAGE = 'test_deployment'
         DOCKER_TAG = "v3"
         DOCKER_USER = "mjid6"
         DOCKER_PASS ="dckr_pat_knjjAjvRy6Qsy1arF36wVnB2Wug"
     }
-
     stages {
         stage('clone the repository') {
             steps {
@@ -30,7 +28,6 @@ pipeline {
                 bat "docker rmi mjid6/${DOCKER_IMAGE}:latest --force"
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 script {
@@ -50,8 +47,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    bat "docker push mjid6/${DOCKER_IMAGE}:${DOCKER_TAG}"
-            
+                    bat "docker push mjid6/${DOCKER_IMAGE}:${DOCKER_TAG}"            
                 }
             }
         }
@@ -80,9 +76,6 @@ pipeline {
                 bat "kubectl port-forward service/test-service 8082:80 --kubeconfig=C:\\Users\\USER\\.kube\\config"
                 }
             }
-        }
-
-        
+        }    
     }
-
 }
