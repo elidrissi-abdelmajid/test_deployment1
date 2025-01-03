@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKER_IMAGE = 'test_deployment'
-        DOCKER_TAG = "v3"
+        DOCKER_TAG = "v4"
         DOCKER_USER = "mjid6"
         DOCKER_PASS ="dckr_pat_knjjAjvRy6Qsy1arF36wVnB2Wug"
     }
